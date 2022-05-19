@@ -10,5 +10,29 @@ function randomColor(){
     return index;
 }
 
+//sounds
+function playSoundGreen(){
+    var audio = new Audio("./assets/sounds/green.mp3");
+    audio.play();
+}
 
+function playSoundRed(){
+    var audio = new Audio("./assets/sounds/red.mp3");
+    audio.play();
+}
+
+function playSoundYellow(){
+    var audio = new Audio("./assets/sounds/yellow.mp3");
+    audio.play();
+}
+
+function playSoundBlue(){
+    var audio = new Audio("./assets/sounds/blue.mp3");
+    audio.play();
+}
+
+function playSoundWrong(){
+    var audio = new Audio("./assets/sounds/wrong.mp3");
+    audio.play();
+}
 
