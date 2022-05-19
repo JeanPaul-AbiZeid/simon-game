@@ -36,3 +36,10 @@ function playSoundWrong(){
     audio.play();
 }
 
+//linking buttons
+var greenBtn = document.getElementsByClassName("green");
+var redBtn = document.getElementsByClassName("red");
+var yellowBtn = document.getElementsByClassName("yellow");
+var blueBtn = document.getElementsByClassName("blue");
+var wrongBtn = document.getElementsByClassName("red");
+
