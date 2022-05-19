@@ -50,3 +50,16 @@
   .blue {
     background-color: blue;
   }
+
+  @media only screen and (max-width: 900px) {
+    .mobile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .button {
+        margin-top: 5%;
+    }
+  }
