@@ -1,0 +1,13 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .main-container {
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(0, 0, 90);
+      color: white;
+  }
