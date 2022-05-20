@@ -1,6 +1,4 @@
 let colors = ["green", "red", "yellow", "blue"];
-let generatedSequence = [];
-let userSequence = [];
 var level = 1;
 
 //linking variables
@@ -17,13 +15,13 @@ function changeText(string, change){
     document.getElementById(string).innerHTML = change;
 }
 
-//generating numbers between 0 and 3
+//generating color
 function randomColor(){
     var index = Math.floor(Math.random() * colors.length);
-    return index;
+    return colors[index];
 }
 
-//sounds
+//buttons clicks
 function greenClick(){
     var audio = new Audio("./assets/sounds/green.mp3");
     audio.play();
@@ -71,6 +69,11 @@ function wrongClick(){
 
 // inital click to start the game
 mainBtn[0].addEventListener("click", function(){
+    let generatedSequence = [];
+    let userSequence = [];
+    changeText("text", "Level " + level);  //changing levels
+    let nextColor = randomColor();
+    generatedSequence.push(nextColor);   //adding to sequence
     greenBtn[0].addEventListener("click", greenClick);
     redBtn[0].addEventListener("click", redClick);
     yellowBtn[0].addEventListener("click", yellowClick);
