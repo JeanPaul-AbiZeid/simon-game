@@ -22,24 +22,36 @@ function greenClick(){
     var audio = new Audio("./assets/sounds/green.mp3");
     audio.play();
     greenBtn[0].style.backgroundColor = "lightgray";
+    greenBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
+    setTimeout(function() {greenBtn[0].style.backgroundColor = "green"}, 200);
+    setTimeout(function() {greenBtn[0].style.boxShadow = "none"}, 200);
 }
 
 function redClick(){
     var audio = new Audio("./assets/sounds/red.mp3");
     audio.play();
     redBtn[0].style.backgroundColor = "lightgray";
+    redBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
+    setTimeout(function() {redBtn[0].style.backgroundColor = "red"}, 200);
+    setTimeout(function() {redBtn[0].style.boxShadow = "none"}, 200);
 }
 
 function yellowClick(){
     var audio = new Audio("./assets/sounds/yellow.mp3");
     audio.play();
     yellowBtn[0].style.backgroundColor = "lightgray";
+    yellowBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
+    setTimeout(function() {yellowBtn[0].style.backgroundColor = "yellow"}, 200);
+    setTimeout(function() {yellowBtn[0].style.boxShadow = "none"}, 200);
 }
 
 function blueClick(){
     var audio = new Audio("./assets/sounds/blue.mp3");
     audio.play();
-    yellowBtn[0].style.backgroundColor = "lightgray";
+    blueBtn[0].style.backgroundColor = "lightgray";
+    blueBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
+    setTimeout(function() {blueBtn[0].style.backgroundColor = "blue"}, 200);
+    setTimeout(function() {blueBtn[0].style.boxShadow = "none"}, 200);
 }
 
 function wrongClick(){
