@@ -66,14 +66,48 @@ function wrongClick(){
     changeText("text", "Game Over, Press Any Key To Restart");
 }
 
+function colorLevelBtn(nextColor){
+    if (nextColor == "green"){
+        var audio = new Audio("./assets/sounds/green.mp3");
+        audio.play();
+        greenBtn[0].style.visibility = "hidden";
+        setTimeout(function() {greenBtn[0].style.visibility = "visible"}, 200);
+    }
+
+    else if (nextColor == "red") {
+        var audio = new Audio("./assets/sounds/red.mp3");
+        audio.play();
+        redBtn[0].style.visibility = "hidden";
+        setTimeout(function() {redBtn[0].style.visibility = "visible"}, 200);
+    }
+
+    else if (nextColor == "yellow") {
+        var audio = new Audio("./assets/sounds/yellow.mp3");
+        audio.play();
+        yellowBtn[0].style.visibility = "hidden";
+        setTimeout(function() {yellowBtn[0].style.visibility = "visible"}, 200);
+    }
+
+    else {
+        var audio = new Audio("./assets/sounds/blue.mp3");
+        audio.play();
+        blueBtn[0].style.visibility = "hidden";
+        setTimeout(function() {blueBtn[0].style.visibility = "visible"}, 200);
+    }
+
+}
 
 // inital click to start the game
 mainBtn[0].addEventListener("click", function(){
     let generatedSequence = [];
     let userSequence = [];
+
     changeText("text", "Level " + level);  //changing levels
+    
     let nextColor = randomColor();
     generatedSequence.push(nextColor);   //adding to sequence
+    colorLevelBtn(nextColor)
+
     greenBtn[0].addEventListener("click", greenClick);
     redBtn[0].addEventListener("click", redClick);
     yellowBtn[0].addEventListener("click", yellowClick);
