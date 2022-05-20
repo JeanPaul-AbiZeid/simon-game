@@ -42,4 +42,10 @@ var redBtn = document.getElementsByClassName("red");
 var yellowBtn = document.getElementsByClassName("yellow");
 var blueBtn = document.getElementsByClassName("blue");
 var wrongBtn = document.getElementsByClassName("red");
+var mainBtn = document.getElementsByClassName("main-container");
+
+// inital click to start the game
+mainBtn[0].addEventListener("click", function(){
+    
+})
 
