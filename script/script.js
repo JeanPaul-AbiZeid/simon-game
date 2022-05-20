@@ -3,13 +3,19 @@ let generatedSequence = [];
 let userSequence = [];
 var level = 1;
 
-//linking buttons
+//linking variables
 var greenBtn = document.getElementsByClassName("green");
 var redBtn = document.getElementsByClassName("red");
 var yellowBtn = document.getElementsByClassName("yellow");
 var blueBtn = document.getElementsByClassName("blue");
 var wrongBtn = document.getElementsByClassName("red");
 var mainBtn = document.getElementsByClassName("main-container");
+
+//change text function
+function changeText(string, change){
+    //changing text
+    document.getElementById(string).innerHTML = change;
+}
 
 //generating numbers between 0 and 3
 function randomColor(){
@@ -57,6 +63,9 @@ function blueClick(){
 function wrongClick(){
     var audio = new Audio("./assets/sounds/wrong.mp3");
     audio.play();
+    mainBtn[0].style.backgroundColor = "red";
+    setTimeout(function() {mainBtn[0].style.backgroundColor = "rgb(0, 0, 90)"}, 200);
+    changeText("text", "Game Over, Press Any Key To Restart");
 }
 
 
