@@ -88,6 +88,13 @@ function check(color) { //checking if the color is correct
         }
     }
     else {  //if wrong color
+        //reseting variables
+        userSequence = [];
+        generatedSequence = [];
+        clickNumber = -1;
+        level = 0;
+
+        //wrong effect
         var audio = new Audio("./assets/sounds/wrong.mp3");
         audio.play();
         mainBtn[0].style.backgroundColor = "red";
