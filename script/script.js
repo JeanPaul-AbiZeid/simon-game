@@ -1,4 +1,6 @@
 let colors = ["green", "red", "yellow", "blue"];
+let generatedSequence = [];
+let userSequence = [];
 var level = 1;
 
 //linking variables
@@ -29,6 +31,7 @@ function greenClick(){
     greenBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {greenBtn[0].style.backgroundColor = "green"}, 200);
     setTimeout(function() {greenBtn[0].style.boxShadow = "none"}, 200);
+    userSequence.push("green");
 }
 
 function redClick(){
@@ -38,6 +41,7 @@ function redClick(){
     redBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {redBtn[0].style.backgroundColor = "red"}, 200);
     setTimeout(function() {redBtn[0].style.boxShadow = "none"}, 200);
+    userSequence.push("red");
 }
 
 function yellowClick(){
@@ -47,6 +51,7 @@ function yellowClick(){
     yellowBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {yellowBtn[0].style.backgroundColor = "yellow"}, 200);
     setTimeout(function() {yellowBtn[0].style.boxShadow = "none"}, 200);
+    userSequence.push("yellow");
 }
 
 function blueClick(){
@@ -56,6 +61,7 @@ function blueClick(){
     blueBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {blueBtn[0].style.backgroundColor = "blue"}, 200);
     setTimeout(function() {blueBtn[0].style.boxShadow = "none"}, 200);
+    userSequence.push("blue");
 }
 
 function wrongClick(){
@@ -100,20 +106,18 @@ function colorLevelBtn(nextColor){
 // inital click to start the game
 mainBtn[0].addEventListener("click", function(){
     setTimeout(function() {
-        let generatedSequence = [];
-    let userSequence = [];
-
     changeText("text", "Level " + level);  //changing levels
-    
+        
     let nextColor = randomColor();
     generatedSequence.push(nextColor);   //adding to sequence
     colorLevelBtn(nextColor)
-
+    
     greenBtn[0].addEventListener("click", greenClick);
     redBtn[0].addEventListener("click", redClick);
     yellowBtn[0].addEventListener("click", yellowClick);
     blueBtn[0].addEventListener("click", blueClick);
+    console.log(userSequence);
     }, 500)
     
-})
+}, {once: true});
 
