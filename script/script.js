@@ -1,7 +1,7 @@
 let colors = ["green", "red", "yellow", "blue"];
 let generatedSequence = [];
 let userSequence = [];
-var level = 1;
+var level = 0;
 
 //linking variables
 var greenBtn = document.getElementsByClassName("green");
@@ -15,6 +15,11 @@ var mainBtn = document.getElementsByClassName("main-container");
 function changeText(string, change){
     //changing text
     document.getElementById(string).innerHTML = change;
+}
+
+function nextRound(){
+    level += 1;
+    changeText("text", "Level " + level);
 }
 
 //generating color
@@ -106,12 +111,12 @@ function colorLevelBtn(nextColor){
 // inital click to start the game
 mainBtn[0].addEventListener("click", function(){
     setTimeout(function() {
-    changeText("text", "Level " + level);  //changing levels
+    nextRound();  //changing levels
         
     let nextColor = randomColor();
     generatedSequence.push(nextColor);   //adding to sequence
     colorLevelBtn(nextColor)
-    
+
     greenBtn[0].addEventListener("click", greenClick);
     redBtn[0].addEventListener("click", redClick);
     yellowBtn[0].addEventListener("click", yellowClick);
