@@ -85,9 +85,13 @@ function check(color) { //checking if the color is correct
     userSequence.push(color);
     if(color == generatedSequence[clickNumber]) {
         if(userSequence. length == generatedSequence.length){  //reseting user sequence at the end of each level
-            userSequence = [];
-            nextSequence();
-        }
+            setTimeout(function() {
+                userSequence = [];
+                clickNumber = -1;
+                nextSequence();
+            }, 1000);  
+            }
+            
     }
     else {  //if wrong color
         //reseting variables
