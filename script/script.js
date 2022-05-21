@@ -18,23 +18,25 @@ function changeText(string, change){
     document.getElementById(string).innerHTML = change;
 }
 
-function nextRound(){
+// function nextRound(){
+//     level += 1;
+//     // changeText("text", "Level " + level);
+// }
+
+//next sequence
+function nextSequence(){
+    var index = Math.floor(Math.random() * colors.length);
+    var color = colors[index];
+    generatedSequence.push(color);
+    console.log(generatedSequence);
+    colorLevelBtn(color);  //effect for next button
     level += 1;
     changeText("text", "Level " + level);
 }
 
-//next sequence
-function nextSequence(){
-    level ++;
-    var index = Math.floor(Math.random() * colors.length);
-    var color = colors[index];
-    generatedSequence.push(color);
-    colorLevelBtn(color);
-}
-
 //buttons clicks
 function greenClick(){
-    clickNumber ++;
+    clickNumber += 1;
     var audio = new Audio("./assets/sounds/green.mp3");
     audio.play();
     greenBtn[0].style.backgroundColor = "lightgray";
@@ -43,10 +45,11 @@ function greenClick(){
     setTimeout(function() {greenBtn[0].style.boxShadow = "none"}, 200);
     userSequence.push("green");
     console.log(userSequence);
+    check("green");
 }
 
 function redClick(){
-    clickNumber ++;
+    clickNumber += 1;
     var audio = new Audio("./assets/sounds/red.mp3");
     audio.play();
     redBtn[0].style.backgroundColor = "lightgray";
@@ -55,10 +58,11 @@ function redClick(){
     setTimeout(function() {redBtn[0].style.boxShadow = "none"}, 200);
     userSequence.push("red");
     console.log(userSequence);
+    check("red");
 }
 
 function yellowClick(){
-    clickNumber ++;
+    clickNumber += 1;
     var audio = new Audio("./assets/sounds/yellow.mp3");
     audio.play();
     yellowBtn[0].style.backgroundColor = "lightgray";
@@ -67,10 +71,11 @@ function yellowClick(){
     setTimeout(function() {yellowBtn[0].style.boxShadow = "none"}, 200);
     userSequence.push("yellow");
     console.log(userSequence);
+    check("yellow");
 }
 
 function blueClick(){
-    clickNumber ++;
+    clickNumber += 1;
     var audio = new Audio("./assets/sounds/blue.mp3");
     audio.play();
     blueBtn[0].style.backgroundColor = "lightgray";
@@ -79,19 +84,19 @@ function blueClick(){
     setTimeout(function() {blueBtn[0].style.boxShadow = "none"}, 200);
     userSequence.push("blue");
     console.log(userSequence);
+    check("blue");
 }
 
 function check(color) { //checking if the color is correct
     userSequence.push(color);
     if(color == generatedSequence[clickNumber]) {
-        if(userSequence. length == generatedSequence.length){  //reseting user sequence at the end of each level
+        if(userSequence.length == generatedSequence.length){  //reseting user sequence at the end of each level
             setTimeout(function() {
                 userSequence = [];
                 clickNumber = -1;
                 nextSequence();
             }, 1000);  
-            }
-            
+        }
     }
     else {  //if wrong color
         //reseting variables
@@ -143,29 +148,17 @@ function colorLevelBtn(nextColor){
 // inital click to start the game
 mainBtn[0].addEventListener("click", function(){
     setTimeout(function() {
-    //round
-    nextRound();  //changing levels  
-    nextSequence();        //hiding next color
-    console.log(generatedSequence);
-    
-    //player's turn
-    var remaingTaps = level;
-    while (remaingTaps !== 0){
+    if (level <= 15){
+        //round 
+        nextSequence();        //hiding next color
         
+        //player's turn
         greenBtn[0].addEventListener("click", greenClick);
         redBtn[0].addEventListener("click", redClick);
         yellowBtn[0].addEventListener("click", yellowClick);
         blueBtn[0].addEventListener("click", blueClick);
-        if (userSequence === generatedSequence){
-            nextRound();
-        }
-        // else{
-        //     wrongClick();
-            
-        // }
-    
-    remaingTaps -= 1;
-    }
+        
+    }   
 }, 500)
     
 }, {once: true});
