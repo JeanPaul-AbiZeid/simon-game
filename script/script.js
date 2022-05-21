@@ -99,7 +99,8 @@ function colorLevelBtn(nextColor){
 
 // inital click to start the game
 mainBtn[0].addEventListener("click", function(){
-    let generatedSequence = [];
+    setTimeout(function() {
+        let generatedSequence = [];
     let userSequence = [];
 
     changeText("text", "Level " + level);  //changing levels
@@ -112,5 +113,7 @@ mainBtn[0].addEventListener("click", function(){
     redBtn[0].addEventListener("click", redClick);
     yellowBtn[0].addEventListener("click", yellowClick);
     blueBtn[0].addEventListener("click", blueClick);
+    }, 500)
+    
 })
 
