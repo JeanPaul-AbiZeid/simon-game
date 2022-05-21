@@ -2,6 +2,7 @@ let colors = ["green", "red", "yellow", "blue"];
 let generatedSequence = [];
 let userSequence = [];
 var level = 0;
+var clickNumber = -1; //number of the click to increment the index
 
 //linking variables
 var greenBtn = document.getElementsByClassName("green");
@@ -32,6 +33,7 @@ function nextSequence(){
 
 //buttons clicks
 function greenClick(){
+    clickNumber ++;
     var audio = new Audio("./assets/sounds/green.mp3");
     audio.play();
     greenBtn[0].style.backgroundColor = "lightgray";
@@ -43,6 +45,7 @@ function greenClick(){
 }
 
 function redClick(){
+    clickNumber ++;
     var audio = new Audio("./assets/sounds/red.mp3");
     audio.play();
     redBtn[0].style.backgroundColor = "lightgray";
@@ -54,6 +57,7 @@ function redClick(){
 }
 
 function yellowClick(){
+    clickNumber ++;
     var audio = new Audio("./assets/sounds/yellow.mp3");
     audio.play();
     yellowBtn[0].style.backgroundColor = "lightgray";
@@ -65,6 +69,7 @@ function yellowClick(){
 }
 
 function blueClick(){
+    clickNumber ++;
     var audio = new Audio("./assets/sounds/blue.mp3");
     audio.play();
     blueBtn[0].style.backgroundColor = "lightgray";
