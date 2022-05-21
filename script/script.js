@@ -22,10 +22,12 @@ function nextRound(){
     changeText("text", "Level " + level);
 }
 
-//generating color
-function randomColor(){
+//next sequence
+function nextSequence(){
     var index = Math.floor(Math.random() * colors.length);
-    return colors[index];
+    var color = colors[index];
+    generatedSequence.push(color);
+    colorLevelBtn(color);
 }
 
 //buttons clicks
@@ -37,6 +39,7 @@ function greenClick(){
     setTimeout(function() {greenBtn[0].style.backgroundColor = "green"}, 200);
     setTimeout(function() {greenBtn[0].style.boxShadow = "none"}, 200);
     userSequence.push("green");
+    console.log(userSequence);
 }
 
 function redClick(){
@@ -47,6 +50,7 @@ function redClick(){
     setTimeout(function() {redBtn[0].style.backgroundColor = "red"}, 200);
     setTimeout(function() {redBtn[0].style.boxShadow = "none"}, 200);
     userSequence.push("red");
+    console.log(userSequence);
 }
 
 function yellowClick(){
@@ -57,6 +61,7 @@ function yellowClick(){
     setTimeout(function() {yellowBtn[0].style.backgroundColor = "yellow"}, 200);
     setTimeout(function() {yellowBtn[0].style.boxShadow = "none"}, 200);
     userSequence.push("yellow");
+    console.log(userSequence);
 }
 
 function blueClick(){
@@ -67,6 +72,7 @@ function blueClick(){
     setTimeout(function() {blueBtn[0].style.backgroundColor = "blue"}, 200);
     setTimeout(function() {blueBtn[0].style.boxShadow = "none"}, 200);
     userSequence.push("blue");
+    console.log(userSequence);
 }
 
 function wrongClick(){
@@ -111,18 +117,30 @@ function colorLevelBtn(nextColor){
 // inital click to start the game
 mainBtn[0].addEventListener("click", function(){
     setTimeout(function() {
-    nextRound();  //changing levels
+    //round
+    nextRound();  //changing levels  
+    nextSequence();        //hiding next color
+    console.log(generatedSequence);
+    
+    //player's turn
+    var remaingTaps = level;
+    while (remaingTaps !== 0){
         
-    let nextColor = randomColor();
-    generatedSequence.push(nextColor);   //adding to sequence
-    colorLevelBtn(nextColor)
-
-    greenBtn[0].addEventListener("click", greenClick);
-    redBtn[0].addEventListener("click", redClick);
-    yellowBtn[0].addEventListener("click", yellowClick);
-    blueBtn[0].addEventListener("click", blueClick);
-    console.log(userSequence);
-    }, 500)
+        greenBtn[0].addEventListener("click", greenClick);
+        redBtn[0].addEventListener("click", redClick);
+        yellowBtn[0].addEventListener("click", yellowClick);
+        blueBtn[0].addEventListener("click", blueClick);
+        if (userSequence === generatedSequence){
+            nextRound();
+        }
+        // else{
+        //     wrongClick();
+            
+        // }
+    
+    remaingTaps -= 1;
+    }
+}, 500)
     
 }, {once: true});
 
