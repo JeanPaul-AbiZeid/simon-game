@@ -25,6 +25,7 @@ function nextRound(){
 
 //next sequence
 function nextSequence(){
+    level ++;
     var index = Math.floor(Math.random() * colors.length);
     var color = colors[index];
     generatedSequence.push(color);
@@ -85,6 +86,7 @@ function check(color) { //checking if the color is correct
     if(color == generatedSequence[clickNumber]) {
         if(userSequence. length == generatedSequence.length){  //reseting user sequence at the end of each level
             userSequence = [];
+            nextSequence();
         }
     }
     else {  //if wrong color
