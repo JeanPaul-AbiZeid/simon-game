@@ -80,12 +80,20 @@ function blueClick(){
     console.log(userSequence);
 }
 
-function wrongClick(){
-    var audio = new Audio("./assets/sounds/wrong.mp3");
-    audio.play();
-    mainBtn[0].style.backgroundColor = "red";
-    setTimeout(function() {mainBtn[0].style.backgroundColor = "rgb(0, 0, 90)"}, 200);
-    changeText("text", "Game Over, Press Any Key To Restart");
+function check(color) { //checking if the color is correct
+    userSequence.push(color);
+    if(color == generatedSequence[clickNumber]) {
+        if(userSequence. length == generatedSequence.length){  //reseting user sequence at the end of each level
+            userSequence = [];
+        }
+    }
+    else {  //if wrong color
+        var audio = new Audio("./assets/sounds/wrong.mp3");
+        audio.play();
+        mainBtn[0].style.backgroundColor = "red";
+        setTimeout(function() {mainBtn[0].style.backgroundColor = "rgb(0, 0, 90)"}, 200);
+        changeText("text", "Game Over, Press Any Key To Restart");
+    }
 }
 
 function colorLevelBtn(nextColor){
