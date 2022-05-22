@@ -18,11 +18,6 @@ function changeText(string, change){
     document.getElementById(string).innerHTML = change;
 }
 
-// function nextRound(){
-//     level += 1;
-//     // changeText("text", "Level " + level);
-// }
-
 //next sequence
 function nextSequence(){
     var index = Math.floor(Math.random() * colors.length);
@@ -43,7 +38,6 @@ function greenClick(){
     greenBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {greenBtn[0].style.backgroundColor = "green"}, 200);
     setTimeout(function() {greenBtn[0].style.boxShadow = "none"}, 200);
-    userSequence.push("green");
     console.log(userSequence);
     check("green");
 }
@@ -56,7 +50,6 @@ function redClick(){
     redBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {redBtn[0].style.backgroundColor = "red"}, 200);
     setTimeout(function() {redBtn[0].style.boxShadow = "none"}, 200);
-    userSequence.push("red");
     console.log(userSequence);
     check("red");
 }
@@ -69,7 +62,6 @@ function yellowClick(){
     yellowBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {yellowBtn[0].style.backgroundColor = "yellow"}, 200);
     setTimeout(function() {yellowBtn[0].style.boxShadow = "none"}, 200);
-    userSequence.push("yellow");
     console.log(userSequence);
     check("yellow");
 }
@@ -82,7 +74,6 @@ function blueClick(){
     blueBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {blueBtn[0].style.backgroundColor = "blue"}, 200);
     setTimeout(function() {blueBtn[0].style.boxShadow = "none"}, 200);
-    userSequence.push("blue");
     console.log(userSequence);
     check("blue");
 }
@@ -92,9 +83,14 @@ function check(color) { //checking if the color is correct
     if(color == generatedSequence[clickNumber]) {
         if(userSequence.length == generatedSequence.length){  //reseting user sequence at the end of each level
             setTimeout(function() {
-                userSequence = [];
-                clickNumber = -1;
-                nextSequence();
+                if (generatedSequence.length == 15){          //when finishing the final level
+                    changeText ("text", "Congratulations, You Won.");
+                    }
+                else {
+                    userSequence = [];
+                    clickNumber = -1;
+                    nextSequence();
+                }
             }, 1000);  
         }
     }
@@ -145,10 +141,12 @@ function colorLevelBtn(nextColor){
 
 }
 
+
+
 // inital click to start the game
 mainBtn[0].addEventListener("click", function(){
     setTimeout(function() {
-    if (level <= 15){
+    if (level <= 0){
         //round 
         nextSequence();        //hiding next color
         
@@ -158,7 +156,7 @@ mainBtn[0].addEventListener("click", function(){
         yellowBtn[0].addEventListener("click", yellowClick);
         blueBtn[0].addEventListener("click", blueClick);
         
-    }   
+    }
 }, 500)
     
 }, {once: true});
