@@ -32,10 +32,10 @@ function greenClick(){
     clickNumber += 1;
     var audio = new Audio("./assets/sounds/green.mp3");
     audio.play();
-    greenBtn[0].style.backgroundColor = "lightgray";
-    greenBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
-    setTimeout(function() {greenBtn[0].style.backgroundColor = "green"}, 200);
-    setTimeout(function() {greenBtn[0].style.boxShadow = "none"}, 200);
+    greenBtn.style.backgroundColor = "lightgray";
+    greenBtn.style.boxShadow = "0 0 10px 5px lightgray";
+    setTimeout(function() {greenBtn.style.backgroundColor = "green"}, 200);
+    setTimeout(function() {greenBtn.style.boxShadow = "none"}, 200);
     check("green");
 }
 
@@ -43,10 +43,10 @@ function redClick(){
     clickNumber += 1;
     var audio = new Audio("./assets/sounds/red.mp3");
     audio.play();
-    redBtn[0].style.backgroundColor = "lightgray";
-    redBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
-    setTimeout(function() {redBtn[0].style.backgroundColor = "red"}, 200);
-    setTimeout(function() {redBtn[0].style.boxShadow = "none"}, 200);
+    redBtn.style.backgroundColor = "lightgray";
+    redBtn.style.boxShadow = "0 0 10px 5px lightgray";
+    setTimeout(function() {redBtn.style.backgroundColor = "red"}, 200);
+    setTimeout(function() {redBtn.style.boxShadow = "none"}, 200);
     check("red");
 }
 
@@ -54,10 +54,10 @@ function yellowClick(){
     clickNumber += 1;
     var audio = new Audio("./assets/sounds/yellow.mp3");
     audio.play();
-    yellowBtn[0].style.backgroundColor = "lightgray";
-    yellowBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
-    setTimeout(function() {yellowBtn[0].style.backgroundColor = "yellow"}, 200);
-    setTimeout(function() {yellowBtn[0].style.boxShadow = "none"}, 200);
+    yellowBtn.style.backgroundColor = "lightgray";
+    yellowBtn.style.boxShadow = "0 0 10px 5px lightgray";
+    setTimeout(function() {yellowBtn.style.backgroundColor = "yellow"}, 200);
+    setTimeout(function() {yellowBtn.style.boxShadow = "none"}, 200);
     check("yellow");
 }
 
@@ -65,10 +65,10 @@ function blueClick(){
     clickNumber += 1;
     var audio = new Audio("./assets/sounds/blue.mp3");
     audio.play();
-    blueBtn[0].style.backgroundColor = "lightgray";
-    blueBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
-    setTimeout(function() {blueBtn[0].style.backgroundColor = "blue"}, 200);
-    setTimeout(function() {blueBtn[0].style.boxShadow = "none"}, 200);
+    blueBtn.style.backgroundColor = "lightgray";
+    blueBtn.style.boxShadow = "0 0 10px 5px lightgray";
+    setTimeout(function() {blueBtn.style.backgroundColor = "blue"}, 200);
+    setTimeout(function() {blueBtn.style.boxShadow = "none"}, 200);
     check("blue");
 }
 
@@ -77,12 +77,12 @@ function check(color) { //checking if the color is correct
     if(color == generatedSequence[clickNumber]) {
         if(userSequence.length == generatedSequence.length){  //reseting user sequence at the end of each level
             setTimeout(function() {
-                if (generatedSequence.length == 3){          //when finishing the final level
+                if (generatedSequence.length == 15){          //when finishing the final level
                     changeText ("text", "Congratulations, You Won.<br/> Click anywhere to restart.");
-                    greenBtn[0].removeEventListener("click", greenClick);
-                    redBtn[0].removeEventListener("click", redClick);
-                    yellowBtn[0].removeEventListener("click", yellowClick);
-                    blueBtn[0].removeEventListener("click", blueClick);
+                    greenBtn.removeEventListener("click", greenClick);
+                    redBtn.removeEventListener("click", redClick);
+                    yellowBtn.removeEventListener("click", yellowClick);
+                    blueBtn.removeEventListener("click", blueClick);
                     userSequence = [];
                     generatedSequence = [];
                     clickNumber = -1;
@@ -110,10 +110,10 @@ function check(color) { //checking if the color is correct
         mainBtn.style.backgroundColor = "red";
         setTimeout(function() {mainBtn.style.backgroundColor = "rgb(0, 0, 90)"}, 200);
         changeText("text", "Game Over, Press Any Key To Restart");
-        greenBtn[0].removeEventListener("click", greenClick);
-        redBtn[0].removeEventListener("click", redClick);
-        yellowBtn[0].removeEventListener("click", yellowClick);
-        blueBtn[0].removeEventListener("click", blueClick);
+        greenBtn.removeEventListener("click", greenClick);
+        redBtn.removeEventListener("click", redClick);
+        yellowBtn.removeEventListener("click", yellowClick);
+        blueBtn.removeEventListener("click", blueClick);
         mainBtn.addEventListener("mousedown", main_button_click);
     }
    
@@ -123,29 +123,29 @@ function fade_Button(nextColor){
     if (nextColor == "green"){
         var audio = new Audio("./assets/sounds/green.mp3");
         audio.play();
-        greenBtn[0].style.visibility = "hidden";
-        setTimeout(function() {greenBtn[0].style.visibility = "visible"}, 200);
+        greenBtn.style.visibility = "hidden";
+        setTimeout(function() {greenBtn.style.visibility = "visible"}, 200);
     }
 
     else if (nextColor == "red") {
         var audio = new Audio("./assets/sounds/red.mp3");
         audio.play();
-        redBtn[0].style.visibility = "hidden";
-        setTimeout(function() {redBtn[0].style.visibility = "visible"}, 200);
+        redBtn.style.visibility = "hidden";
+        setTimeout(function() {redBtn.style.visibility = "visible"}, 200);
     }
 
     else if (nextColor == "yellow") {
         var audio = new Audio("./assets/sounds/yellow.mp3");
         audio.play();
-        yellowBtn[0].style.visibility = "hidden";
-        setTimeout(function() {yellowBtn[0].style.visibility = "visible"}, 200);
+        yellowBtn.style.visibility = "hidden";
+        setTimeout(function() {yellowBtn.style.visibility = "visible"}, 200);
     }
 
     else {
         var audio = new Audio("./assets/sounds/blue.mp3");
         audio.play();
-        blueBtn[0].style.visibility = "hidden";
-        setTimeout(function() {blueBtn[0].style.visibility = "visible"}, 200);
+        blueBtn.style.visibility = "hidden";
+        setTimeout(function() {blueBtn.style.visibility = "visible"}, 200);
     }
 
 }
@@ -158,10 +158,10 @@ function main_button_click(){
             nextSequence();        //hiding next color
             
             //player's turn
-            greenBtn[0].addEventListener("click", greenClick);
-            redBtn[0].addEventListener("click", redClick);
-            yellowBtn[0].addEventListener("click", yellowClick);
-            blueBtn[0].addEventListener("click", blueClick);
+            greenBtn.addEventListener("click", greenClick);
+            redBtn.addEventListener("click", redClick);
+            yellowBtn.addEventListener("click", yellowClick);
+            blueBtn.addEventListener("click", blueClick);
         }
     }, 500)
 }
