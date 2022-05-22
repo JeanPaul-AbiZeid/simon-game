@@ -5,11 +5,10 @@ var level = 0;
 var clickNumber = -1; //number of the click to increment the index
 
 //linking variables
-var greenBtn = document.getElementsByClassName("green");
-var redBtn = document.getElementsByClassName("red");
-var yellowBtn = document.getElementsByClassName("yellow");
-var blueBtn = document.getElementsByClassName("blue");
-var wrongBtn = document.getElementsByClassName("red");
+var greenBtn = document.getElementById("green");
+var redBtn = document.getElementById("red");
+var yellowBtn = document.getElementById("yellow");
+var blueBtn = document.getElementById("blue");
 var mainBtn = document.getElementById("main-container");
 
 //change text function
@@ -23,7 +22,6 @@ function nextSequence(){
     var index = Math.floor(Math.random() * colors.length);
     var color = colors[index];
     generatedSequence.push(color);
-    console.log(generatedSequence);
     fade_Button(color);  //effect for next button
     level += 1;
     changeText("text", "Level " + level);
@@ -38,7 +36,6 @@ function greenClick(){
     greenBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {greenBtn[0].style.backgroundColor = "green"}, 200);
     setTimeout(function() {greenBtn[0].style.boxShadow = "none"}, 200);
-    console.log(userSequence);
     check("green");
 }
 
@@ -50,7 +47,6 @@ function redClick(){
     redBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {redBtn[0].style.backgroundColor = "red"}, 200);
     setTimeout(function() {redBtn[0].style.boxShadow = "none"}, 200);
-    console.log(userSequence);
     check("red");
 }
 
@@ -62,7 +58,6 @@ function yellowClick(){
     yellowBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {yellowBtn[0].style.backgroundColor = "yellow"}, 200);
     setTimeout(function() {yellowBtn[0].style.boxShadow = "none"}, 200);
-    console.log(userSequence);
     check("yellow");
 }
 
@@ -74,7 +69,6 @@ function blueClick(){
     blueBtn[0].style.boxShadow = "0 0 10px 5px lightgray";
     setTimeout(function() {blueBtn[0].style.backgroundColor = "blue"}, 200);
     setTimeout(function() {blueBtn[0].style.boxShadow = "none"}, 200);
-    console.log(userSequence);
     check("blue");
 }
 
