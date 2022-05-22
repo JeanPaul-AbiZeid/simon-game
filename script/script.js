@@ -146,7 +146,7 @@ function colorLevelBtn(nextColor){
 // inital click to start the game
 mainBtn[0].addEventListener("click", function(){
     setTimeout(function() {
-    if (level <= 0){
+    if (level == 0){
         //round 
         nextSequence();        //hiding next color
         
