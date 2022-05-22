@@ -1,4 +1,3 @@
-let colors = ["green", "red", "yellow", "blue"];
 let generatedSequence = [];
 let userSequence = [];
 var level = 0;
@@ -25,8 +24,8 @@ function changeText(string, change){
 
 //next sequence
 function nextSequence(){
-    var index = Math.floor(Math.random() * colors.length);
-    var color = colors[index];
+    var index = Math.floor(Math.random() * color_array.length);
+    var color = color_array[index][0];
     generatedSequence.push(color);
     fade_Button(color);  //effect for next button
     level += 1;
@@ -34,48 +33,34 @@ function nextSequence(){
 }
 
 //buttons clicks
-function greenClick(){
+
+function click_changes(index){
+    var color = color_array[index][0]; 
+    var color_button = color_array[index][1];            
     clickNumber += 1;
-    var audio = new Audio("./assets/sounds/green.mp3");
+    var audio = new Audio("./assets/sounds/" + color + ".mp3");
     audio.play();
-    greenBtn.style.backgroundColor = "lightgray";
-    greenBtn.style.boxShadow = "0 0 10px 5px lightgray";
-    setTimeout(function() {greenBtn.style.backgroundColor = "green"}, 200);
-    setTimeout(function() {greenBtn.style.boxShadow = "none"}, 200);
-    check("green");
+    color_button.style.backgroundColor = "lightgray";
+    color_button.style.boxShadow = "0 0 10px 5px lightgray";
+    setTimeout(function() {color_button.style.backgroundColor = color}, 200);
+    setTimeout(function() {color_button.style.boxShadow = "none"}, 200);
+    check(color);
+}
+    
+function greenClick(){
+    click_changes(0);
 }
 
 function redClick(){
-    clickNumber += 1;
-    var audio = new Audio("./assets/sounds/red.mp3");
-    audio.play();
-    redBtn.style.backgroundColor = "lightgray";
-    redBtn.style.boxShadow = "0 0 10px 5px lightgray";
-    setTimeout(function() {redBtn.style.backgroundColor = "red"}, 200);
-    setTimeout(function() {redBtn.style.boxShadow = "none"}, 200);
-    check("red");
+    click_changes(1);
 }
 
 function yellowClick(){
-    clickNumber += 1;
-    var audio = new Audio("./assets/sounds/yellow.mp3");
-    audio.play();
-    yellowBtn.style.backgroundColor = "lightgray";
-    yellowBtn.style.boxShadow = "0 0 10px 5px lightgray";
-    setTimeout(function() {yellowBtn.style.backgroundColor = "yellow"}, 200);
-    setTimeout(function() {yellowBtn.style.boxShadow = "none"}, 200);
-    check("yellow");
+    click_changes(2);
 }
 
 function blueClick(){
-    clickNumber += 1;
-    var audio = new Audio("./assets/sounds/blue.mp3");
-    audio.play();
-    blueBtn.style.backgroundColor = "lightgray";
-    blueBtn.style.boxShadow = "0 0 10px 5px lightgray";
-    setTimeout(function() {blueBtn.style.backgroundColor = "blue"}, 200);
-    setTimeout(function() {blueBtn.style.boxShadow = "none"}, 200);
-    check("blue");
+    click_changes(3);
 }
 
 function remove_listner(color_map){
@@ -95,7 +80,7 @@ function check(color) { //checking if the color is correct
     if(color == generatedSequence[clickNumber]) {
         if(userSequence.length == generatedSequence.length){  //reseting user sequence at the end of each level
             setTimeout(function() {
-                if (generatedSequence.length == 15){          //when finishing the final level
+                if (generatedSequence.length == 5){          //when finishing the final level
                     changeText ("text", "Congratulations, You Won.<br/> Click anywhere to restart.");
                     remove_listner()
                     userSequence = [];
@@ -132,34 +117,15 @@ function check(color) { //checking if the color is correct
 }
 
 function fade_Button(nextColor){
-    if (nextColor == "green"){
-        var audio = new Audio("./assets/sounds/green.mp3");
+    for(var index = 0; index < color_array.length; index++){
+        if (nextColor == color_array[index][0]){
+        var audio = new Audio("./assets/sounds/" + color_array[index][0] + ".mp3");
         audio.play();
-        greenBtn.style.visibility = "hidden";
-        setTimeout(function() {greenBtn.style.visibility = "visible"}, 200);
+        var color_button = color_array[index][1];
+        color_button.style.visibility = "hidden";
+        setTimeout(function() {color_button.style.visibility = "visible"}, 200);
     }
-
-    else if (nextColor == "red") {
-        var audio = new Audio("./assets/sounds/red.mp3");
-        audio.play();
-        redBtn.style.visibility = "hidden";
-        setTimeout(function() {redBtn.style.visibility = "visible"}, 200);
     }
-
-    else if (nextColor == "yellow") {
-        var audio = new Audio("./assets/sounds/yellow.mp3");
-        audio.play();
-        yellowBtn.style.visibility = "hidden";
-        setTimeout(function() {yellowBtn.style.visibility = "visible"}, 200);
-    }
-
-    else {
-        var audio = new Audio("./assets/sounds/blue.mp3");
-        audio.play();
-        blueBtn.style.visibility = "hidden";
-        setTimeout(function() {blueBtn.style.visibility = "visible"}, 200);
-    }
-
 }
 
 function main_button_click(){
