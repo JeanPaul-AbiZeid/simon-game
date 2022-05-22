@@ -24,7 +24,7 @@ function nextSequence(){
     var color = colors[index];
     generatedSequence.push(color);
     console.log(generatedSequence);
-    colorLevelBtn(color);  //effect for next button
+    fade_Button(color);  //effect for next button
     level += 1;
     changeText("text", "Level " + level);
 }
@@ -110,7 +110,7 @@ function check(color) { //checking if the color is correct
     }
 }
 
-function colorLevelBtn(nextColor){
+function fade_Button(nextColor){
     if (nextColor == "green"){
         var audio = new Audio("./assets/sounds/green.mp3");
         audio.play();
