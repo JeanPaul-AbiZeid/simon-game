@@ -75,6 +75,13 @@ function add_listner(color_map){
     }
 }
 
+function reset(){
+    userSequence = [];
+    generatedSequence = [];
+    clickNumber = -1;
+    level = 0;
+}
+
 function check(color) { //checking if the color is correct
     userSequence.push(color);
     if(color == generatedSequence[clickNumber]) {
@@ -83,10 +90,7 @@ function check(color) { //checking if the color is correct
                 if (generatedSequence.length == 5){          //when finishing the final level
                     changeText ("text", "Congratulations, You Won.<br/> Click anywhere to restart.");
                     remove_listner()
-                    userSequence = [];
-                    generatedSequence = [];
-                    clickNumber = -1;
-                    level = 0;
+                    reset();
                     mainBtn.addEventListener("mousedown", main_button_click);
                     }
                 else {
@@ -99,10 +103,7 @@ function check(color) { //checking if the color is correct
     }
     else {  //if wrong color
         //reseting variables
-        userSequence = [];
-        generatedSequence = [];
-        clickNumber = -1;
-        level = 0;
+        reset();
 
         //"wrong" effect
         var audio = new Audio("./assets/sounds/wrong.mp3");
