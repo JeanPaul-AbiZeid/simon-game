@@ -83,8 +83,17 @@ function check(color) { //checking if the color is correct
     if(color == generatedSequence[clickNumber]) {
         if(userSequence.length == generatedSequence.length){  //reseting user sequence at the end of each level
             setTimeout(function() {
-                if (generatedSequence.length == 15){          //when finishing the final level
-                    changeText ("text", "Congratulations, You Won.");
+                if (generatedSequence.length == 3){          //when finishing the final level
+                    changeText ("text", "Congratulations, You Won.<br/> Click anywhere to restart.");
+                    greenBtn[0].removeEventListener("click", greenClick);
+                    redBtn[0].removeEventListener("click", redClick);
+                    yellowBtn[0].removeEventListener("click", yellowClick);
+                    blueBtn[0].removeEventListener("click", blueClick);
+                    userSequence = [];
+                    generatedSequence = [];
+                    clickNumber = -1;
+                    level = 0;
+                    mainBtn.addEventListener("mousedown", main_button_click);
                     }
                 else {
                     userSequence = [];
@@ -159,7 +168,6 @@ function main_button_click(){
             redBtn[0].addEventListener("click", redClick);
             yellowBtn[0].addEventListener("click", yellowClick);
             blueBtn[0].addEventListener("click", blueClick);
-            
         }
     }, 500)
 }
