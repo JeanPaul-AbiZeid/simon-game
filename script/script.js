@@ -11,6 +11,12 @@ var yellowBtn = document.getElementById("yellow");
 var blueBtn = document.getElementById("blue");
 var mainBtn = document.getElementById("main-container");
 
+//color map
+const color_array = [["green", greenBtn, greenClick],
+                    ["red", redBtn, redClick],
+                    ["yellow", yellowBtn, yellowClick],
+                    ["blue", blueBtn, blueClick]];
+
 //change text function
 function changeText(string, change){
     //changing text
@@ -72,6 +78,18 @@ function blueClick(){
     check("blue");
 }
 
+function remove_listner(color_map){
+    for(var index = 0; index < color_array.length; index++){
+    color_array[index][1].removeEventListener("click",color_array[index][2]);
+    }
+}
+
+function add_listner(color_map){
+    for(var index = 0; index < color_array.length; index++){
+        color_array[index][1].addEventListener("click",color_array[index][2]);
+    }
+}
+
 function check(color) { //checking if the color is correct
     userSequence.push(color);
     if(color == generatedSequence[clickNumber]) {
@@ -79,10 +97,7 @@ function check(color) { //checking if the color is correct
             setTimeout(function() {
                 if (generatedSequence.length == 15){          //when finishing the final level
                     changeText ("text", "Congratulations, You Won.<br/> Click anywhere to restart.");
-                    greenBtn.removeEventListener("click", greenClick);
-                    redBtn.removeEventListener("click", redClick);
-                    yellowBtn.removeEventListener("click", yellowClick);
-                    blueBtn.removeEventListener("click", blueClick);
+                    remove_listner()
                     userSequence = [];
                     generatedSequence = [];
                     clickNumber = -1;
@@ -110,10 +125,7 @@ function check(color) { //checking if the color is correct
         mainBtn.style.backgroundColor = "red";
         setTimeout(function() {mainBtn.style.backgroundColor = "rgb(0, 0, 90)"}, 200);
         changeText("text", "Game Over, Press Any Key To Restart");
-        greenBtn.removeEventListener("click", greenClick);
-        redBtn.removeEventListener("click", redClick);
-        yellowBtn.removeEventListener("click", yellowClick);
-        blueBtn.removeEventListener("click", blueClick);
+        remove_listner();
         mainBtn.addEventListener("mousedown", main_button_click);
     }
    
@@ -158,10 +170,7 @@ function main_button_click(){
             nextSequence();        //hiding next color
             
             //player's turn
-            greenBtn.addEventListener("click", greenClick);
-            redBtn.addEventListener("click", redClick);
-            yellowBtn.addEventListener("click", yellowClick);
-            blueBtn.addEventListener("click", blueClick);
+            add_listner();
         }
     }, 500)
 }
