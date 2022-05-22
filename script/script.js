@@ -104,10 +104,16 @@ function check(color) { //checking if the color is correct
         //"wrong" effect
         var audio = new Audio("./assets/sounds/wrong.mp3");
         audio.play();
-        mainBtn[0].style.backgroundColor = "red";
-        setTimeout(function() {mainBtn[0].style.backgroundColor = "rgb(0, 0, 90)"}, 200);
+        mainBtn.style.backgroundColor = "red";
+        setTimeout(function() {mainBtn.style.backgroundColor = "rgb(0, 0, 90)"}, 200);
         changeText("text", "Game Over, Press Any Key To Restart");
+        greenBtn[0].removeEventListener("click", greenClick);
+        redBtn[0].removeEventListener("click", redClick);
+        yellowBtn[0].removeEventListener("click", yellowClick);
+        blueBtn[0].removeEventListener("click", blueClick);
+        mainBtn.addEventListener("mousedown", main_button_click);
     }
+   
 }
 
 function fade_Button(nextColor){
@@ -141,23 +147,23 @@ function fade_Button(nextColor){
 
 }
 
-
+function main_button_click(){
+    mainBtn.removeEventListener("mousedown", main_button_click);
+    setTimeout(function() {
+        if (level == 0){
+            //round 
+            nextSequence();        //hiding next color
+            
+            //player's turn
+            greenBtn[0].addEventListener("click", greenClick);
+            redBtn[0].addEventListener("click", redClick);
+            yellowBtn[0].addEventListener("click", yellowClick);
+            blueBtn[0].addEventListener("click", blueClick);
+            
+        }
+    }, 500)
+}
 
 // inital click to start the game
-mainBtn.addEventListener("click", function(){
-    setTimeout(function() {
-    if (level == 0){
-        //round 
-        nextSequence();        //hiding next color
-        
-        //player's turn
-        greenBtn[0].addEventListener("click", greenClick);
-        redBtn[0].addEventListener("click", redClick);
-        yellowBtn[0].addEventListener("click", yellowClick);
-        blueBtn[0].addEventListener("click", blueClick);
-        
-    }
-}, 500)
-    
-}, {once: true});
+mainBtn.addEventListener("mousedown", main_button_click);
 
