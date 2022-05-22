@@ -87,7 +87,7 @@ function check(color) { //checking if the color is correct
     if(color == generatedSequence[clickNumber]) {
         if(userSequence.length == generatedSequence.length){  //reseting user sequence at the end of each level
             setTimeout(function() {
-                if (generatedSequence.length == 5){          //when finishing the final level
+                if (generatedSequence.length == 15){          //when finishing the final level
                     changeText ("text", "Congratulations, You Won.<br/> Click anywhere to restart.");
                     remove_listner()
                     reset();
