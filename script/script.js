@@ -10,7 +10,7 @@ var redBtn = document.getElementsByClassName("red");
 var yellowBtn = document.getElementsByClassName("yellow");
 var blueBtn = document.getElementsByClassName("blue");
 var wrongBtn = document.getElementsByClassName("red");
-var mainBtn = document.getElementsByClassName("main-container");
+var mainBtn = document.getElementById("main-container");
 
 //change text function
 function changeText(string, change){
@@ -101,7 +101,7 @@ function check(color) { //checking if the color is correct
         clickNumber = -1;
         level = 0;
 
-        //wrong effect
+        //"wrong" effect
         var audio = new Audio("./assets/sounds/wrong.mp3");
         audio.play();
         mainBtn[0].style.backgroundColor = "red";
@@ -144,7 +144,7 @@ function colorLevelBtn(nextColor){
 
 
 // inital click to start the game
-mainBtn[0].addEventListener("click", function(){
+mainBtn.addEventListener("click", function(){
     setTimeout(function() {
     if (level == 0){
         //round 

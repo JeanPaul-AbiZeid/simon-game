@@ -5,7 +5,7 @@
     box-sizing: border-box;
   }
 
-  .main-container {
+  #main-container {
     color: white;
     padding-top: 5%;
     height: 100%;
