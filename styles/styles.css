@@ -21,17 +21,18 @@
 
   .button-subcontainer {
     display: flex;
-    margin-left: 40%;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 2%;
     height: 150px;
-    width: 20%;
   }
+
   .button {
-    width: 100%;
+    width: 15%;
     height: 100%;
     border: 5px solid black;
     border-radius: 20px;
-    margin-right: 5%;
+    margin-right: 2%;
   }
 
 /* colors */
@@ -61,12 +62,13 @@
     }
     
     .button {
-      width: 100%;
+      width: 30%;
+      height: 100%;
       margin-top: 5%;
     }
 
     .button-subcontainer {
-      height: 250px;
-      width: 150px;
+      height: 40%;
+      width: 100%;
     }
   }
